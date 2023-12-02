@@ -17,6 +17,12 @@ class TestTrainingSet:
     def test_examples(self, training_sets):
         assert [2, 3] == [training_set.examples for training_set in training_sets]
 
+    def test_features(self, training_sets):
+        assert [3, 3] == [training_set.features for training_set in training_sets]
+
+    def test_targets(self, training_sets):
+        assert [[4, 8], [4, 8, 12]] == [list(training_set.targets) for training_set in training_sets]
+
     def test_invalid_input_type(self):
         with pytest.raises(ValueError) as e:
             TrainingSet('stuff')

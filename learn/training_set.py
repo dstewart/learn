@@ -3,7 +3,7 @@ import numpy as np
 
 class TrainingSet:
     
-    def __init__(self, data):
+    def __init__(self, data: list):
         if type(data) != list:
             raise ValueError('data must be a list, found {}'.format(type(data).__name__))
 
@@ -18,5 +18,13 @@ class TrainingSet:
             raise ValueError('data must have at least 2 colums, found {}'.format(columns))
 
     @property
-    def examples(self):
+    def examples(self) -> int:
         return self._data.shape[0]
+    
+    @property
+    def features(self) -> int:
+        return self._data.shape[1] - 1
+    
+    @property
+    def targets(self) -> np.ndarray:
+        return self._data[:, -1]
