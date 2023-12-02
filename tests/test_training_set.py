@@ -5,14 +5,17 @@ import pytest
 from learn.training_set import TrainingSet
 
 
-class TrainingSetTest(unittest.TestCase):
+class TestTrainingSet:
 
-    def test_examples(self):
-        training_set = TrainingSet([[1, 2, 3, 4], [5, 6, 7, 8]])
-        assert training_set.examples == 2
+    @pytest.fixture
+    def training_sets(self):
+        return [
+            TrainingSet([[1, 2, 3, 4], [5, 6, 7, 8]]),
+            TrainingSet([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]),
+        ]
 
-        training_set = TrainingSet([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]])
-        assert training_set.examples == 3
+    def test_examples(self, training_sets):
+        assert [2, 3] == [training_set.examples for training_set in training_sets]
 
     def test_invalid_input_type(self):
         with pytest.raises(ValueError) as e:
