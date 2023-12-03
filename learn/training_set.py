@@ -21,11 +21,11 @@ class TrainingSet:
         self._targets = data[:, -1]
 
     @property
-    def examples(self) -> int:
+    def num_examples(self) -> int:
         return self._features.shape[0]
     
     @property
-    def features(self) -> int:
+    def num_features(self) -> int:
         return self._features.shape[1]
     
     @property

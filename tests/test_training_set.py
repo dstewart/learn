@@ -14,11 +14,11 @@ class TestTrainingSet:
             TrainingSet([[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]),
         ]
 
-    def test_examples(self, training_sets):
-        assert [2, 3] == [training_set.examples for training_set in training_sets]
+    def test_num_examples(self, training_sets):
+        assert [2, 3] == [training_set.num_examples for training_set in training_sets]
 
-    def test_features(self, training_sets):
-        assert [3, 3] == [training_set.features for training_set in training_sets]
+    def test_num_features(self, training_sets):
+        assert [3, 3] == [training_set.num_features for training_set in training_sets]
 
     def test_targets(self, training_sets):
         assert [[4, 8], [4, 8, 12]] == [list(training_set.targets) for training_set in training_sets]
